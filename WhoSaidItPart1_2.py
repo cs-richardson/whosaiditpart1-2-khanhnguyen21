@@ -45,8 +45,8 @@ def get_counts(filename):
 
 # Get the counts for the two shortened versions
 # of the texts
-shakespeare_counts = get_counts("hamlet_short.txt")
-austen_counts = get_counts("pride_and_prejudice_short.txt")
+shakespeare_counts = get_counts("hamlet.txt")
+austen_counts = get_counts("pride_and_prejudice.txt")
 
 # Check the contents of the dictionaries
 for word,count in shakespeare_counts.items():
