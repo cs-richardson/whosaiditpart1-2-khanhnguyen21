@@ -6,7 +6,7 @@
 # Punctuation removal code: https://stackoverflow.com/questions/34293875/how-to-remove-punctuation-marks-from-a-string-in-python-3-x-using-translate/34294022
 import string
 
-translator=str.maketrans('','',string.punctuation)
+translator = str.maketrans('','',string.punctuation)
 
 # normalize
 # -----
@@ -27,26 +27,26 @@ def normalize(word):
 def get_counts(filename):
     words = []
     resultDict = {"_total":0}
-    word = ''
-    f = open(filename,"r")
-    for x in f:
-        x = x.translate(translator)
-        words = x.split()
-        for y in words:
-            if y.isalpha():
-                word = normalize(y)
+    file = open(filename,"r")
+    for line in file:
+        line = line.translate(translator)
+        words = line.split()
+        for word in words:
+            if word.isalpha():
+                word = normalize(word)
                 if word in resultDict:
                     resultDict[word] = resultDict[word] + 1
                 else:
                     resultDict[word] = 1
                 resultDict["_total"] = resultDict["_total"] + 1
-    f.close()
+      
+    file.close()
     return resultDict
 
 # Get the counts for the two shortened versions
 # of the texts
-shakespeare_counts = get_counts("hamlet.txt")
-austen_counts = get_counts("pride_and_prejudice.txt")
+shakespeare_counts = get_counts("hamlet_short.txt")
+austen_counts = get_counts("pride_and_prejudice_short.txt")
 
 # Check the contents of the dictionaries
 for word,count in shakespeare_counts.items():
